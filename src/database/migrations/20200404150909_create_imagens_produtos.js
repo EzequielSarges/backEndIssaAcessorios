@@ -1,15 +1,14 @@
 
 exports.up = function(knex) {
-    return knex.schema.createTable('imagen_produto', function(table){
+    return knex.schema.createTable('imagem_produto', function(table){
         table.increments();
-        table.integer('imagens_id').unsigned();
-        table.integer('produtos_id').unsigned();
+        table.integer('produto_id').unsigned();
+        table.string('caminho').notNullable();
 
-        table.foreign('imagens_id').references('id').inTable('imagens');
-        table.foreign('produtos_id').references('id').inTable('produtos');
+        table.foreign('produto_id').references('id').inTable('produtos');
     })
 };
 
 exports.down = function(knex) {
-  return knex.schema.dropTable('imagen_produto');
+  return knex.schema.dropTable('imagem_produto');
 };
